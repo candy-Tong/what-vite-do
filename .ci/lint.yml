@@ -1,0 +1,29 @@
+version: v2.0
+name: lint
+
+on:
+  push:
+    branches: ["*"]
+  mr:
+    target-branches: ["*"]
+jobs:
+  build:
+    runs-on:
+      needs:
+        nodejs: 17.9.0
+    steps:
+      - name: 拉取代码
+        checkout: self
+      - name: 安装依赖
+        run: |
+          npm i pnpm --ignore-scripts --registry https://mirrors.tencent.com/npm/ --legacy-peer-deps
+          export PATH=node_modules/.bin:$PATH+
+          pnpm config set registry https://mirrors.tencent.com/npm/
+          pnpm install
+      - name: 执行lint
+        run: |
+          npm run lint:fix
+          npm run stylelint:fix
+notices:
+  - type: wework-message
+    if: FAILURE

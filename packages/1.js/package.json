@@ -1,0 +1,16 @@
+{
+  "name": "1.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "debug": "node D:\\tencent\\app\\vite\\packages\\vite\\bin\\vite"
+  },
+  "devDependencies": {
+    "vite": "^2.9.10"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
